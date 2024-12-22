@@ -7,8 +7,9 @@ type Mutation {
     post(url: String!, description: String!): Link!
 }
 
-type Link {
-  id: ID!
-  description: String!
-  url: String!
+model Link {
+    id Int @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    description String
+    url String
 }
