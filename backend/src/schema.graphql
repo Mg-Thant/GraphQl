@@ -1,6 +1,7 @@
 type Query {
   info: String!
   feed: [Link!]!
+  feedByCurrentUserId: [Link!]!
 }
 
 type Mutation {
@@ -26,4 +27,8 @@ type User {
   name: String!
   email: String!
   links: [Link!]!
+}
+
+type Subscription {
+  newLink: Link
 }

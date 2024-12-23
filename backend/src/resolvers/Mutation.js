@@ -13,6 +13,8 @@ const post = (parent, args, context) => {
     },
   });
 
+  context.pubsub.publish("NEW_LINK", newLink);
+
   return newLink;
 };
 
