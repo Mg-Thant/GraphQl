@@ -3,11 +3,13 @@ const jwt = require("jsonwebtoken");
 const { APP_SECRET } = require("../utils");
 
 const post = (parent, args, context) => {
+  const { userId } = context;
   const { url, description } = args;
   const newLink = context.prisma.link.create({
     data: {
       url,
       description,
+      postedBy: { connect: { id: userId } }, // connect the new link with the user
     },
   });
 
@@ -30,7 +32,7 @@ const signup = async (parent, args, context) => {
 };
 
 const login = async (parent, args, context) => {
-  const user = await context.prisma.userfindUnique({
+  const user = await context.prisma.user.findUnique({
     where: { email: args.email },
   });
 
