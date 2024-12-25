@@ -1,7 +1,18 @@
 type Query {
   info: String!
-  feed(filter: String): [Link!]!
+  feed(filter: String, skip: Int, take: Int, orderBy: LinkOrderByInput): [Link!]!
   feedByCurrentUserId: [Link!]!
+}
+
+input LinkOrderByInput {
+  description: Sort
+  url: Sort
+  createdAt: Sort 
+}
+
+enum Sort {
+  asc
+  desc
 }
 
 type Mutation {
