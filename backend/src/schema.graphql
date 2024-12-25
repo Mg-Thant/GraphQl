@@ -1,6 +1,6 @@
 type Query {
   info: String!
-  feed: [Link!]!
+  feed(filter: String): [Link!]!
   feedByCurrentUserId: [Link!]!
 }
 
@@ -15,7 +15,7 @@ type Link {
   id: ID!
   description: String!
   url: String!
-  postedBy: User
+  postedBy: User  
   votes: [Vote!]!
 }
 
